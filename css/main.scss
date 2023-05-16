@@ -1,2 +1,568 @@
 @use 'setting' as set;
 
+// index/sec_mv
+
+.mv {
+    height: 100%;
+}
+
+.swiper {
+    height: 100%;
+
+    &-wrapper {
+        height: 100%;
+    }
+
+    &-slide {
+        height: 100%;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            background-color: set.$black-color;
+            opacity: 0.3;
+        }
+    }
+
+    &_txt {
+        position: absolute;
+        top: 5%;
+        left: 10%;
+        color: set.$subO-color;
+        font-weight: bold;
+        font-size: 1.2rem;
+        z-index: 1;
+
+        @include set.mq() {
+            font-size: 2.5rem;
+        }
+    }
+
+    &_img {
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+
+        @include set.mq() {
+            height: 90vh;
+        }
+
+        &:hover {
+            transition: all .25s;
+            transform: scale(1.1);
+        }
+    }
+}
+
+.my_thinking {
+    width: 92%;
+    margin: 5% auto;
+
+    &__topttl {
+        font-weight: bold;
+        font-size: 2.2rem;
+        text-align: center;
+        margin: 2rem;
+    }
+
+    &__container {
+        @include set.flex();
+        flex-direction: column;
+
+        @include set.mq() {
+            gap: 2rem;
+            flex-direction: row;
+        }
+    }
+
+    &__wrapper {
+        font-weight: bold;
+        border-bottom: 2px solid set.$black-color;
+        border-left: 2px solid set.$black-color;
+        border-bottom-left-radius: 10px;
+        padding: .5rem ;
+    }
+
+    &__wrapper:not(:first-child) {
+        margin-top: 2rem;
+
+        @include set.mq() {
+            margin-top: 0;
+        }
+    }
+
+    &__ttl::first-letter {
+        font-size: 2.5rem;
+        color: set.$subyg-color;
+    }
+}
+
+.top_corp_info {
+    
+    &__ttl {
+        text-align: center;
+        margin: 2rem;
+        font-weight: bold;
+        font-size: 2.2rem;
+    }
+
+    &__container {
+        width: 100%;
+        @include set.flex();
+        flex-direction: column;
+
+        @include set.mq() {
+            flex-direction: row;
+        }
+    }
+
+    &__Imgwrapper {
+        position: relative;
+        width: 100%;
+
+        &__click {
+            position: absolute;
+            bottom: 5%;
+            left: 15%;
+            color: set.$subyg-color;
+            font-weight: bold;
+
+            @include set.mq() {
+                font-size: 2rem;
+            }
+        }
+
+        &__img {
+            width: 100%;
+            height: 100%;
+
+            @include set.mq() {
+                margin: 0 auto;
+                max-width: 800px;
+                width: 80%;
+                border-top-right-radius: 10px;
+                height: 100%;
+            }
+        }
+    }
+
+    &__wrapper {
+
+        margin: 2rem;
+
+        &__list {
+            @include set.flex(start,start);
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        &__item {
+            display: block;
+            font-weight: bold;
+
+            & > h2 {
+                font-size: 1.5rem;
+
+                &::first-letter {
+                    color: set.$subO-color;
+                }
+            }
+
+            & > p {
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+        }
+
+
+    }
+}
+
+.top_contact{
+
+    &__topttl {
+        text-align: center;
+        margin: 2rem;
+        font-weight: bold;
+        font-size: 2.2rem;
+    }
+
+    &__container {
+
+        @include set.mq() {
+            @include set.flex(space-between);
+            flex-direction: row-reverse;
+        }
+    }
+
+    &__Imgwrapper {
+        width: 100%;
+        
+        @include set.mq() {
+            flex: 0 0 600px;
+            border-top-left-radius: 10px;
+            height: 100%;
+
+        }
+        & > img {
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+
+    &__wrapper {
+        width: 92%;
+        text-align: center;
+        font-weight: bold;
+        margin: 10% auto;
+
+        @include set.mq() {
+            flex: 1 1 600px;
+        }
+    }
+
+    &__txt {
+        font-size: 1.1rem;
+        letter-spacing: 0.1em;
+    }
+
+    &__link {
+        display: inline-block;
+        transition: all .25s;
+        margin-top: 2rem;
+        background-color: set.$subyg-color;
+        border-radius: 20px;
+        padding: 1rem;
+        white-space: nowrap;
+
+        &:hover {
+            background: rgb(148,56,21);
+            background: linear-gradient(90deg, rgba(148,56,21,1) 0%, rgba(239,108,53,1) 0%, rgba(112,224,42,1) 100%);
+            color: set.$white-color;
+        }
+    }
+
+}
+
+// index.html end
+
+// company.html
+
+.company {
+
+    width: 100%;
+
+    &__topttl {
+        text-align: center;
+        margin: 2rem;
+        font-weight: bold;
+        font-size: 2.2rem;
+    }
+    
+    &_container {
+        margin: 0 auto;
+        width: 92%;
+        max-width: 1280px;
+    }
+}
+
+.table {
+
+    &_row {
+        @include set.flex(space-between);
+        width: 100%;
+        line-height: 1.75;
+        opacity: .7;
+        padding-left: .5rem;
+
+        @include set.mq() {
+            font-size: 1.5rem;
+        }
+
+        &:not(:first-child) {
+            margin-top: 1.5rem;
+        }
+
+        &:nth-child(odd) {
+            background-color: set.$orange-color;
+        }
+    }
+
+    &_head {
+        width: 20%;
+    }
+
+    &_data {
+        width: 60%;
+    }
+}
+
+.adress {
+
+    &__topttl {
+        text-align: center;
+        margin: 2rem;
+        font-weight: bold;
+        font-size: 2.2rem;
+    }
+
+    &_container {
+        @include set.flex();
+        flex-direction: column;
+        font-weight: bold;
+        width: 100%;
+        margin: 0 auto;
+
+        @include set.mq() {
+            font-size: 1.5rem;
+            @include set.flex(space-between)
+        }
+    }
+
+    &_txt {
+        padding-left: .5rem;
+        opacity: .7;
+        
+        @include set.mq() {
+            width: 20%;
+        }
+    }
+
+    .map {
+        margin-top: 1rem;
+        
+        @include set.mq() {
+            width: 50%;
+        }
+    }
+}
+
+// work.html
+
+.work {
+    &__topttl {
+        text-align: center;
+        margin: 2rem;
+        font-weight: bold;
+        font-size: 2.2rem;
+    }
+
+    &_container {
+        margin: 0 auto;
+        width: 92%;
+        max-width: 1280px;
+    }
+
+    &_sp {
+        display: block;
+
+        @include set.mq() {
+            display: none;
+        }
+    }
+
+    &_dt {
+        display: none;
+
+        @include set.mq() {
+            display: block;
+        }
+
+        &__container {
+            @include set.mq() {
+                display: flex;
+                gap: 2rem;
+            }
+        }
+
+
+        .work_wrapper:first-child {
+            @include set.mq() {
+                flex: 0 0 30%;
+            }
+        }
+
+        .work_wrapper:last-child {
+            @include set.mq() {
+                flex: 0 0 60%;
+            }
+        }
+    }
+
+    &_flow__ttl {
+        text-align: center;
+        margin: 1rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+}
+
+.gsap_box {
+    position: relative;
+
+    &::after{
+        content:'';
+        position:absolute;
+        width:100%;
+        transform:scaleX(0);
+        height:2px;
+        bottom:0;
+        left:0;
+        background-color:set.$black-color;
+        transform-origin:bottom right;
+        transition:transform .4s cubic-bezier(.86,0,.07,1)
+    }
+
+    &.active::after {
+        transform:scaleX(1);
+        transform-origin:bottom left;
+    }
+}
+
+
+
+.work_wrapper .m_work_imgbox {
+    height: 90vh;
+    box-shadow: 2px 2px 5px set.$black-color;
+}
+
+.work_wrapper .m_work_imgbox:not(:first-child) {
+    margin-top: 2rem;
+}
+
+.work_wrapper .m_work_imgbox .m_work_img {
+    width: 100%;
+}
+
+.work_wrapper .m_work_imgbox .m_work_img + h2 {
+    padding: 1rem;
+}
+.work_wrapper .m_work_imgbox .m_work_img + h2 + p {
+    padding: 1rem;
+}
+
+// recruit.html
+
+.recruit {
+
+    &__topttl {
+        text-align: center;
+        margin: 2rem;
+        font-weight: bold;
+        font-size: 2.2rem;
+    }
+
+    &_container {
+        margin: 0 auto;
+        width: 92%;
+        max-width: 1280px;
+    }
+
+    &_txtbox {
+        margin: 10% 0;
+    }
+
+    &_ttl {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    &_txt {
+        margin-top: 1.1rem;
+    }
+
+    &_wrapper {
+        width: 100%;
+    }
+
+    &_table {
+        width: 100%;
+    }
+
+    &_row {
+        width: 100%;
+        @include set.flex(space-between);
+        opacity: .7;
+        padding: 1rem;
+
+
+        &:not(:first-child) {
+            margin-top: 1rem;
+        }
+
+        &:nth-child(odd) {
+            background-color: set.$yellowgreen-color;
+        }
+    }
+
+    &_head {
+        width: 30%;
+    }
+
+    &_data {
+        width: 60%;
+    }
+}
+
+// contact.html 
+
+.contact {
+
+    &__topttl {
+        text-align: center;
+        margin: 2rem;
+        font-weight: bold;
+        font-size: 2.2rem;
+    }
+
+    &_container {
+        margin: 0 auto;
+        width: 92%;
+        max-width: 1280px;
+    }
+
+    &_wrapper {
+        margin: 0 auto;
+        width: 80%;
+        border-bottom: 1px solid set.$black-color;
+        padding-bottom: 2rem;
+        @include set.flex(space-between);
+        font-weight: bold;
+        font-size: 0.5rem;
+
+        @include set.mq() {
+            font-size: 1.2rem;
+        }
+    }
+
+    &_wrapper:first-child {
+        border-top: 1px solid set.$black-color;
+        padding-top: 2rem;
+    }
+
+    &_wrapper:not(:first-child) {
+        padding-top: 2rem;
+    }
+
+    &_label {
+        white-space: nowrap;
+        width: 20%;
+        border-left: 2px solid set.$subyg-color;
+        padding-left: .2rem;
+    }
+
+    &_input {
+        border: 1px solid set.$black-color;
+        width: 60%; 
+    }
+}
+
+

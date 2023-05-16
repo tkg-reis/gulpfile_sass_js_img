@@ -1,5 +1,13 @@
 // layout
 
+html {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Shippori Mincho', serif;
+}
+
 body > section {
     padding: 40px 16px;
 

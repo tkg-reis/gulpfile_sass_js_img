@@ -5,6 +5,233 @@
 @use 'mixin' as min;
 
 .header {
-    height: 100px;
+    height: 150px;
     width: 100%;
+    background-color: var.$orange-color;
+    @include min.flex(space-around,center);
+
+    @include bp.mq() {
+        flex-direction: row;
+        @include min.flex(space-between,start);
+    }
+
+    &_container {
+        @include bp.mq() {
+            height: 100%;
+        }
+    }
+
+    &_logo {
+        height: 100%;
+
+        &__img {
+            height: 100%;
+        }
+    }
+
+    &_toggle__bars {
+        height: 30px;
+        width: 30px;
+        display: block;
+        position: relative;
+        transition: all .25s;
+
+
+        &.open .header_toggle_bar:nth-child(1) {
+            transform: translateY(45px) rotate(-315deg);
+        }
+        &.open .header_toggle_bar:nth-child(2) {
+            visibility: hidden;
+        }
+        &.open .header_toggle_bar:nth-child(3) {
+            transform: translateY(15px) rotate(315deg);
+        }
+        
+
+        @include bp.mq() {
+            display: none;
+        }
+    }
+
+    &_toggle_bar {
+        position: absolute;
+        width: 100%;
+        transition: all .25s;
+        background-color: var.$white-color;
+        z-index: 4;
+    }
+
+    &_toggle_bar:nth-child(1) {
+        top: 0%;
+        height: 3px;
+    }
+
+    &_toggle_bar:nth-child(2) {
+        top: 50%;
+        height: 3px;
+    }
+
+    &_toggle_bar:nth-child(3) {
+        top: 100%;
+        height: 3px;
+
+    }
+    &_toggle {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.9;
+        background-color: var.$orange-color;
+        transition: all 0.25s;
+        animation: modal 0.25s alternate;
+        z-index: 3;
+        overflow-y: scroll;
+    }
+
+    @keyframes modal {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    &_sp {
+        display: block;
+        @include min.flex();
+        
+        @include bp.mq() {
+            display: none;
+        }
+    }
+
+    &__toggle_tel_and_inTime {
+        padding: 1rem;
+        @include min.flex();
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+        color: var.$white-color;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: var.$black-color;
+            z-index: -1;
+        }
+    }
+
+    &_toggle_telnum > a {
+        font-size: 2.2rem;
+        background: linear-gradient(transparent 80% ,var.$subyg-color 0%);
+    }
+
+    &_toggle_list {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+    }
+
+    &_toggle_item {
+        display: block;
+        margin: .5rem;  
+        line-height: 60px;
+        border-bottom: 1px solid var.$black-color;
+        cursor: pointer;
+    }
+
+    &_toggle_link {
+        color: var.$black-color;
+        font-size: 32px;
+        text-align: center;
+        display: block;
+        transition: all 0.25s;
+        text-shadow: 1px 1px 0 var.$black-color,
+        -1px -1px 0 var.$black-color,
+        -1px 1px 0 var.$black-color,
+        1px -1px 0 var.$black-color, 
+        1px 0 0 var.$black-color;
+    }
+    
+    &_dt {
+        display: none;
+    
+        @include bp.mq() {
+            display: block;
+            width: 100%; 
+            height: 100%;
+        }
+    }
+
+    &_tel_and_inTime {
+        @include min.flex();
+        gap: 2rem;
+        color: var.$white-color;
+
+        @include bp.mq() {
+            font-size: 2.3rem;
+            background-color: var.$black-color;
+            padding: 1rem;
+            border-bottom-left-radius: 10px;
+        }
+
+    }
+
+    &_list {
+        @include min.flex();
+        gap: 1.5rem;
+        font-size: 0.2rem;
+        margin-top: 2rem;
+        position: absolute;
+        
+        @include bp.mq(lg) {
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+    }
+
+    &_item:last-child {
+        background-color: var.$subO-color;
+        position: absolute;
+        top: -160%;
+        right: 0%;
+        height: 100%;
+        padding: 2.35rem;
+        @include min.flex();
+    }
+
+    &_link {
+        color: var.$white-color;
+        position: relative;
+        
+
+        &::after{
+            content:'';
+            position:absolute;
+            width:100%;
+            transform:scaleX(0);
+            height:2px;
+            bottom:0;
+            left:0;
+            background-color:var.$black-color;
+            transform-origin:bottom right;
+            transition:transform .4s cubic-bezier(.86,0,.07,1)
+        }
+    
+        &:hover::after{
+            transform:scaleX(1);
+            transform-origin:bottom left;
+        }
+    }
 }
